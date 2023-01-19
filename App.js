@@ -1,5 +1,5 @@
 /**
- * HMR - Hot Module Reloading
+ * HMR - Hot Module Replacement
  * File watcher algorithm
  * Bundling
  * Minify
@@ -13,7 +13,7 @@
  * manage port number
  * consistent Hashing Algorithm
  * Zero config bundler
- * 
+ * Tree shaking - removing unwanted code
  * Transitive Dependencies
  */
 import React from "react";
