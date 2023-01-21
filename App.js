@@ -17,7 +17,22 @@
  * Transitive Dependencies
  */
 import React from "react";
-// import  ReactDOM  from "react-dom/client";
-const heading = React.createElement(
-    "h1",{id:'title'},"Heading"
-)
+import ReactDOM from "react-dom/client";
+
+
+const Title = ()=> (<div key='div'>
+    <h1 key="h1" tabIndex='1'>Heading</h1>
+   
+</div>)
+
+const HeaderComponent = ()=>{
+return (
+<div key='div'>
+    <Title/>
+    <h1 key="h1" tabIndex='1'>body</h1>
+    <div>navigarion</div>
+</div>)
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
+root.render(<HeaderComponent/>)
