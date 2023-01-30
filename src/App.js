@@ -16,21 +16,26 @@
  * Tree shaking - removing unwanted code
  * Transitive Dependencies
  */
+
+// Config Driven UI
+//Optional chaining "?"
+//React use Reconsailation algo(diff algo) to find tree, it's find out what needs to ne update.
+
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-
-const Title = ()=> (<div key='div'>
-    <h1 key="h1" tabIndex='1'>Heading</h1>
-   
-</div>)
+//Default import
+import Body from "./component/Body";
+//named import
+import { Title } from './component/Header';
 
 const HeaderComponent = ()=>{
+    
 return (
 <div key='div'>
+   
     <Title/>
-    <h1 key="h1" tabIndex='1'>body</h1>
-    <div>navigarion</div>
+  
+    <Body/>
 </div>)
 }
 
