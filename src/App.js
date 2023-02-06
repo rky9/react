@@ -26,18 +26,16 @@ import ReactDOM from "react-dom/client";
 //Default import
 import Body from "./component/Body";
 //named import
-import { Title } from './component/Header';
+import Header from "./component/Header";
 
-const HeaderComponent = ()=>{
-    
-return (
-<div key='div'>
-   
-    <Title/>
-  
-    <Body/>
-</div>)
-}
+const HeaderComponent = () => {
+  return (
+    <div key="div">
+      <Header />
+      <Body />
+    </div>
+  );
+};
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<HeaderComponent/>)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<HeaderComponent />);

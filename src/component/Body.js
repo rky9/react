@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { restaurantList } from "../config";
 import RestrauntCard from "./RestraurantCard";
-
+import Shimmer from "./Shimmer";
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurants, setRestaurants] = useState(restaurantList);
@@ -14,6 +14,7 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json);
+    setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
   useEffect(() => {
     getRestaurants();
@@ -25,7 +26,7 @@ const Body = () => {
 
   return (
     <>
-      <div>
+      <div className="p-5 bg-pink-50 my-5">
         <input
           type="text"
           value={searchText}
@@ -35,20 +36,25 @@ const Body = () => {
           }}
         />
         <button
+          className="p-2 m-2 bg-purple-500 text-white rounded-lg"
           onClick={() => {
             const data = filterData(searchText, restaurants);
             setRestaurants(data);
           }}
         >
-          Search{searchText}
+          Search
         </button>
       </div>
-      <div className="restaurant-list">
-        {restaurants.map((restaurant) => {
-          return (
-            <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
-          );
-        })}
+      <div className="flex flex-wrap">
+        {restaurants?.length === 0 ? (
+          <Shimmer />
+        ) : (
+          restaurants?.map((restaurant) => {
+            return (
+              <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
+            );
+          })
+        )}
       </div>
     </>
   );

@@ -1,18 +1,30 @@
-import React from 'react'
+import React from "react";
 
-export const Title = ()=>(
-    <a href='/'><img alt='Logo' src='#'/></a>
-)
+export const Title = () => (
+  <a href="/">
+    <img
+      alt="Logo"
+      src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Free-Food-Images-Download.jpg"
+      className="h-28 p-2 pl-2"
+    />
+  </a>
+);
 
-const Header = ()=>{
-    return(<div className='header'>
-<Title/>
-<ul>
-    <li>Nav</li>
-    <li>Nav</li>
-    <li>Nav</li>
-    </ul>
-    </div>)
-}
+const Header = () => {
+  return (
+    <div className="flex justify-between bg-pink-50 shadow-lg">
+      <Title />
 
-export default Header
+      <div className="nav-items">
+        <ul className="flex py-10">
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li>cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
