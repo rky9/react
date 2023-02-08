@@ -26,9 +26,11 @@ import ReactDOM from "react-dom/client";
 //Default import
 import Body from "./component/Body";
 //named import
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "./component/About";
+import Error from "./component/Error";
 import Header from "./component/Header";
-
-const HeaderComponent = () => {
+const AppLayout = () => {
   return (
     <div key="div">
       <Header />
@@ -36,6 +38,16 @@ const HeaderComponent = () => {
     </div>
   );
 };
-
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeaderComponent />);
+root.render(<RouterProvider router={appRouter} />);
