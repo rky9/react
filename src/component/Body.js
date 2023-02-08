@@ -1,12 +1,14 @@
 //Chunking, Code Splitting, Dynamic bundling, Lazy Loading, On demand loading, Dynamic Import
 
 import React, { useEffect, useState } from "react";
-import { restaurantList } from "../config";
+//import { restaurantList } from "../config";
 import RestrauntCard from "./RestraurantCard";
 import Shimmer from "./Shimmer";
+
 const Body = () => {
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [restaurants, setRestaurants] = useState(restaurantList);
 
   async function getRestaurants() {
     const data = await fetch(
@@ -14,14 +16,18 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json);
-    setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
   useEffect(() => {
     getRestaurants();
+    return () => {};
   }, []);
 
   function filterData(searchText, restaurants) {
-    return restaurants.filter((r) => r.data.name.includes(searchText));
+    return restaurants.filter((r) =>
+      r.data.name.toLowerCase().includes(searchText.toLowerCase())
+    );
   }
 
   return (
@@ -38,18 +44,18 @@ const Body = () => {
         <button
           className="p-2 m-2 bg-purple-500 text-white rounded-lg"
           onClick={() => {
-            const data = filterData(searchText, restaurants);
-            setRestaurants(data);
+            const data = filterData(searchText, allRestaurants);
+            setFilteredRestaurants(data);
           }}
         >
           Search
         </button>
       </div>
       <div className="flex flex-wrap">
-        {restaurants?.length === 0 ? (
+        {allRestaurants?.length === 0 ? (
           <Shimmer />
         ) : (
-          restaurants?.map((restaurant) => {
+          filteredRestaurants?.map((restaurant) => {
             return (
               <RestrauntCard {...restaurant.data} key={restaurant.data.id} />
             );
