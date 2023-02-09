@@ -19,7 +19,7 @@ const RestrauntCard = ({
             "p-2" +
             " rounded-md" +
             " mr-3" +
-            (avgRating > 4 ? " bg-green-400" : " bg-red-400")
+            (avgRating >= 4 ? " bg-green-400" : " bg-red-400")
           }
         >
           {avgRating}
