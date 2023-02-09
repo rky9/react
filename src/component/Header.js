@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Title = () => (
   <a href="/">
@@ -17,10 +18,16 @@ const Header = () => {
 
       <div className="nav-items">
         <ul className="flex py-10">
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>cart</li>
+          <li className="m-2">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="m-2">
+            <Link to="/about">About</Link>
+          </li>
+          <li className="m-2">
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li className="m-2">cart</li>
         </ul>
       </div>
     </div>

@@ -24,17 +24,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 //Default import
-import Body from "./component/Body";
 //named import
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./component/About";
+import Body from "./component/Body";
+import Contact from "./component/Contact";
 import Error from "./component/Error";
+import Footer from "./component/Footer";
 import Header from "./component/Header";
 const AppLayout = () => {
   return (
     <div key="div">
       <Header />
-      <Body />
+      <Outlet />
+      <Footer />
     </div>
   );
 };
@@ -43,6 +46,20 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
   },
   {
     path: "/about",

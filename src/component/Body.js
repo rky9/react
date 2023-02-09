@@ -34,7 +34,8 @@ const Body = () => {
     <>
       <div className="p-5 bg-pink-50 my-5">
         <input
-          type="text"
+          className="p-2"
+          type="search"
           value={searchText}
           placeholder="search"
           onChange={(e) => {
@@ -42,7 +43,7 @@ const Body = () => {
           }}
         />
         <button
-          className="p-2 m-2 bg-purple-500 text-white rounded-lg"
+          className="py-1 px-3 m-2 bg-blue-600 text-white rounded-sm"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
