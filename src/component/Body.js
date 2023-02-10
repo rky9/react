@@ -32,9 +32,9 @@ const Body = () => {
 
   return (
     <>
-      <div className="p-5 bg-pink-50 my-5">
+      <div className="p-5 bg-white my-5 text-center">
         <input
-          className="p-2"
+          className="p-2 w-96 border-blue-900 border-2"
           type="search"
           value={searchText}
           placeholder="search"
@@ -52,7 +52,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap items-center justify-center">
         {allRestaurants?.length === 0 ? (
           <Shimmer />
         ) : (

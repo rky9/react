@@ -1,19 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Logo from "./Logo";
 export const Title = () => (
   <a href="/">
-    <img
-      alt="Logo"
-      src="https://www.pixelstalk.net/wp-content/uploads/2016/08/Free-Food-Images-Download.jpg"
-      className="h-28 p-2 pl-2"
-    />
+    <Logo />
   </a>
 );
 
 const Header = () => {
   return (
-    <div className="flex justify-between bg-pink-50 shadow-lg">
+    <div className="flex justify-between bg-white shadow-lg">
       <Title />
 
       <div className="nav-items">
@@ -30,6 +26,7 @@ const Header = () => {
           <li className="m-2">cart</li>
         </ul>
       </div>
+      <button className="bg-blue-600 p-4 text-white">Login</button>
     </div>
   );
 };

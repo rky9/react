@@ -35,7 +35,7 @@ import Header from "./component/Header";
 import RestraurantMenu from "./component/RestraurantMenu";
 const AppLayout = () => {
   return (
-    <div key="div">
+    <div key="div" style={{ background: "#fefefe" }}>
       <Header />
       <Outlet />
       <Footer />
