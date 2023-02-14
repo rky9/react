@@ -1,15 +1,16 @@
 //Chunking, Code Splitting, Dynamic bundling, Lazy Loading, On demand loading, Dynamic Import
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 //import { restaurantList } from "../config";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 import RestrauntCard from "./RestraurantCard";
 import Shimmer from "./Shimmer";
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  const { user, setUser } = useContext(UserContext);
   async function getRestaurants() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
@@ -40,6 +41,7 @@ const Body = () => {
           placeholder="search"
           onChange={(e) => {
             setSearchText(e.target.value);
+            setUser({ name: e.target.value });
           }}
         />
         <button

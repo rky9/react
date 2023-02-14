@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 import Logo from "./Logo";
 export const Title = () => (
   <a href="/">
@@ -8,6 +9,7 @@ export const Title = () => (
 );
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   return (
     <div className="flex justify-between bg-white shadow-lg">
       <Title />
@@ -26,6 +28,7 @@ const Header = () => {
           <li className="m-2">cart</li>
         </ul>
       </div>
+      {user.name}
       <button className="bg-blue-600 p-4 text-white">Login</button>
     </div>
   );

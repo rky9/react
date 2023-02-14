@@ -21,7 +21,7 @@
 //Optional chaining "?"
 //React use Reconsailation algo(diff algo) to find tree, it's find out what needs to ne update.
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 //Default import
 //named import
@@ -33,13 +33,21 @@ import Error from "./component/Error";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
 import RestraurantMenu from "./component/RestraurantMenu";
+import UserContext from "./utils/UserContext";
+
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "Rajesh",
+    email: "mail@rajeshky.com",
+  });
   return (
-    <div key="div" style={{ background: "#fefefe" }}>
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ user: user, setUser }}>
+      <div key="div" style={{ background: "#fefefe" }}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 const appRouter = createBrowserRouter([
