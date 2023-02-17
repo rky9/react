@@ -10,7 +10,7 @@ const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUpdatedUser } = useContext(UserContext);
   async function getRestaurants() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
@@ -41,7 +41,7 @@ const Body = () => {
           placeholder="search"
           onChange={(e) => {
             setSearchText(e.target.value);
-            setUser({ name: e.target.value });
+            setUpdatedUser({ name: e.target.value });
           }}
         />
         <button
@@ -54,7 +54,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="flex flex-wrap items-center justify-center">
+      <div className="flex flex-wrap items-center justify-around">
         {allRestaurants?.length === 0 ? (
           <Shimmer />
         ) : (

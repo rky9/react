@@ -25,6 +25,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 //Default import
 //named import
+import { Provider } from "react-redux";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./component/About";
 import Body from "./component/Body";
@@ -33,21 +34,24 @@ import Error from "./component/Error";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
 import RestraurantMenu from "./component/RestraurantMenu";
+import store from "./utils/store";
 import UserContext from "./utils/UserContext";
 
 const AppLayout = () => {
-  const [user, setUser] = useState({
+  const [updatedUser, setUpdatedUser] = useState({
     name: "Rajesh",
     email: "mail@rajeshky.com",
   });
   return (
-    <UserContext.Provider value={{ user: user, setUser }}>
-      <div key="div" style={{ background: "#fefefe" }}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider value={{ user: updatedUser, setUpdatedUser }}>
+        <div key="div" style={{ background: "#fefefe" }}>
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
