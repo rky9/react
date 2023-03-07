@@ -9,7 +9,7 @@ const RestrauntCard = ({
   avgRating,
 }) => {
   return (
-    <div className="w-96 p-2 m-2 shadow-lg bg-gray-100">
+    <div className="w-60 p-2 m-2 shadow-lg bg-gray-100">
       <img src={IMG_CDN_URL + cloudinaryImageId} />
       <h2 className="font-bold text-2xl">{name}</h2>
       <div className="mb-2 h-24">{cuisines.join(", ")}</div>

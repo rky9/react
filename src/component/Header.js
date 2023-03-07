@@ -15,25 +15,27 @@ const Header = () => {
 
   const cartItem = useSelector((store) => store.cart.items);
   return (
-    <div className="flex justify-between bg-white shadow-lg">
-      <Title />
+    <div className="container">
+      <div className="flex justify-between bg-white">
+        <Title />
 
-      <div className="nav-items">
-        <ul className="flex py-10">
-          <li className="m-2">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="m-2">
-            <Link to="/about">About</Link>
-          </li>
-          <li className="m-2">
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li className="m-2">cart-{cartItem.length}</li>
-        </ul>
+        <div className="nav-items">
+          <ul className="flex py-10">
+            <li className="m-2">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="m-2">
+              <Link to="/about">About</Link>
+            </li>
+            <li className="m-2">
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li className="m-2">cart-{cartItem.length}</li>
+          </ul>
+        </div>
+        {user.name}
+        <button className="bg-blue-600 p-4 text-white">Login</button>
       </div>
-      {user.name}
-      <button className="bg-blue-600 p-4 text-white">Login</button>
     </div>
   );
 };

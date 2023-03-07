@@ -6,17 +6,22 @@ import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import RestrauntCard from "./RestraurantCard";
 import Shimmer from "./Shimmer";
+import { useDispatch } from "react-redux";
+import { resturantList } from "../utils/headerSliderSlice";
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const { user, setUpdatedUser } = useContext(UserContext);
+  const dispatch = useDispatch();
+
   async function getRestaurants() {
     const data = await fetch(FETCH_MENU_URL1);
     const json = await data.json();
     console.log(json);
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    dispatch(resturantList(json?.data?.cards[2]?.data?.data?.cards));
   }
   useEffect(() => {
     getRestaurants();
@@ -52,21 +57,28 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="flex flex-wrap items-center justify-around">
-        {allRestaurants?.length === 0 ? (
-          <Shimmer />
-        ) : (
-          filteredRestaurants?.map((restaurant) => {
-            return (
-              <Link
-                to={"/restaurantMenu/" + restaurant.data.id}
-                key={restaurant.data.id}
-              >
-                <RestrauntCard {...restaurant.data} />
-              </Link>
-            );
-          })
-        )}
+      <div className="border-b-2 mb-3 pb-3 container">
+        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+          {allRestaurants?.length} restaurants
+        </h2>
+      </div>
+      <div className="container">
+        <div className="flex flex-wrap justify-around">
+          {allRestaurants?.length === 0 ? (
+            <Shimmer />
+          ) : (
+            filteredRestaurants?.map((restaurant) => {
+              return (
+                <Link
+                  to={"/restaurantMenu/" + restaurant.data.id}
+                  key={restaurant.data.id}
+                >
+                  <RestrauntCard {...restaurant.data} />
+                </Link>
+              );
+            })
+          )}
+        </div>
       </div>
     </>
   );

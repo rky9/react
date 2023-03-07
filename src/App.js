@@ -33,6 +33,7 @@ import Contact from "./component/Contact";
 import Error from "./component/Error";
 import Footer from "./component/Footer";
 import Header from "./component/Header";
+import Slider from "./component/Slider";
 import RestraurantMenu from "./component/RestraurantMenu";
 import store from "./utils/store";
 import UserContext from "./utils/UserContext";
@@ -47,6 +48,7 @@ const AppLayout = () => {
       <UserContext.Provider value={{ user: updatedUser, setUpdatedUser }}>
         <div key="div" style={{ background: "#fefefe" }}>
           <Header />
+          <Slider />
           <Outlet />
           <Footer />
         </div>
