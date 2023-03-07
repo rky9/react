@@ -7,7 +7,7 @@ function Slider() {
   const imgSlider = useSelector((store) => store.restaurantSlider.sliderData);
   return (
     <div className="bg-black">
-      <div className="container overflow-y-scroll flex h-20">
+      <div className="container overflow-y-scroll flex h-30">
         {imgSlider?.map((e) => (
           <RestrauntCard {...e.data} />
         ))}
