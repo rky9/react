@@ -36,9 +36,9 @@ const Body = () => {
 
   return (
     <>
-      <div className="p-5 bg-white my-5 text-center">
+      <div className="p-5 bg-white my-5 text-center flex justify-center items-stretch">
         <input
-          className="p-2 w-96 border-blue-900 border-2"
+          className="p-2 w-96 border-blue-900 border-2 border-r-0"
           type="search"
           value={searchText}
           placeholder="search"
@@ -48,7 +48,7 @@ const Body = () => {
           }}
         />
         <button
-          className="py-1 px-3 m-2 bg-blue-600 text-white rounded-sm"
+          className="py-1 px-3 bg-blue-600 text-white cursor-pointer"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
